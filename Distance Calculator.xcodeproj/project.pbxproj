@@ -15,9 +15,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52C727BD1F5BD07E0058D0ED /* Auto Navigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Navigator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52C727C01F5BD07E0058D0ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		52C727C21F5BD07E0058D0ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		52C727BD1F5BD07E0058D0ED /* Distance Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Distance Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C727C01F5BD07E0058D0ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "/Users/Shyam/OneDrive - University of South Australia/Mobile Application Enterprise Development/Assignment1/Distance Calculator/Distance Calculator/AppDelegate.swift"; sourceTree = "<absolute>"; };
+		52C727C21F5BD07E0058D0ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "/Users/Shyam/OneDrive - University of South Australia/Mobile Application Enterprise Development/Assignment1/Distance Calculator/Distance Calculator/ViewController.swift"; sourceTree = "<absolute>"; };
 		52C727C51F5BD07E0058D0ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52C727C71F5BD07E0058D0ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52C727CA1F5BD07E0058D0ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		52C727B41F5BD07E0058D0ED = {
 			isa = PBXGroup;
 			children = (
-				52C727BF1F5BD07E0058D0ED /* Auto Navigator */,
+				52C727BF1F5BD07E0058D0ED /* Distance Calculator */,
 				52C727BE1F5BD07E0058D0ED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		52C727BE1F5BD07E0058D0ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				52C727BD1F5BD07E0058D0ED /* Auto Navigator.app */,
+				52C727BD1F5BD07E0058D0ED /* Distance Calculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		52C727BF1F5BD07E0058D0ED /* Auto Navigator */ = {
+		52C727BF1F5BD07E0058D0ED /* Distance Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				52C727C01F5BD07E0058D0ED /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				52C727C91F5BD07E0058D0ED /* LaunchScreen.storyboard */,
 				52C727CC1F5BD07E0058D0ED /* Info.plist */,
 			);
-			path = "Auto Navigator";
+			path = "Distance Calculator";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		52C727BC1F5BD07E0058D0ED /* Auto Navigator */ = {
+		52C727BC1F5BD07E0058D0ED /* Distance Calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52C727CF1F5BD07E0058D0ED /* Build configuration list for PBXNativeTarget "Auto Navigator" */;
+			buildConfigurationList = 52C727CF1F5BD07E0058D0ED /* Build configuration list for PBXNativeTarget "Distance Calculator" */;
 			buildPhases = (
 				52C727B91F5BD07E0058D0ED /* Sources */,
 				52C727BA1F5BD07E0058D0ED /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = "Auto Navigator";
+			name = "Distance Calculator";
 			productName = "Auto Navigator";
-			productReference = 52C727BD1F5BD07E0058D0ED /* Auto Navigator.app */;
+			productReference = 52C727BD1F5BD07E0058D0ED /* Distance Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 52C727B81F5BD07E0058D0ED /* Build configuration list for PBXProject "Auto Navigator" */;
+			buildConfigurationList = 52C727B81F5BD07E0058D0ED /* Build configuration list for PBXProject "Distance Calculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				52C727BC1F5BD07E0058D0ED /* Auto Navigator */,
+				52C727BC1F5BD07E0058D0ED /* Distance Calculator */,
 			);
 		};
 /* End PBXProject section */
@@ -260,9 +260,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Auto Navigator/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Distance Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shyam.Auto-Navigator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shyam.Distance-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -272,9 +272,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Auto Navigator/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Distance Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shyam.Auto-Navigator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shyam.Distance-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -283,7 +283,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		52C727B81F5BD07E0058D0ED /* Build configuration list for PBXProject "Auto Navigator" */ = {
+		52C727B81F5BD07E0058D0ED /* Build configuration list for PBXProject "Distance Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52C727CD1F5BD07E0058D0ED /* Debug */,
@@ -292,13 +292,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52C727CF1F5BD07E0058D0ED /* Build configuration list for PBXNativeTarget "Auto Navigator" */ = {
+		52C727CF1F5BD07E0058D0ED /* Build configuration list for PBXNativeTarget "Distance Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52C727D01F5BD07E0058D0ED /* Debug */,
 				52C727D11F5BD07E0058D0ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52C727BC1F5BD07E0058D0ED"
-               BuildableName = "Auto Navigator.app"
-               BlueprintName = "Auto Navigator"
-               ReferencedContainer = "container:Auto Navigator.xcodeproj">
+               BuildableName = "Distance Calculator.app"
+               BlueprintName = "Distance Calculator"
+               ReferencedContainer = "container:Distance Calculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52C727BC1F5BD07E0058D0ED"
-            BuildableName = "Auto Navigator.app"
-            BlueprintName = "Auto Navigator"
-            ReferencedContainer = "container:Auto Navigator.xcodeproj">
+            BuildableName = "Distance Calculator.app"
+            BlueprintName = "Distance Calculator"
+            ReferencedContainer = "container:Distance Calculator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52C727BC1F5BD07E0058D0ED"
-            BuildableName = "Auto Navigator.app"
-            BlueprintName = "Auto Navigator"
-            ReferencedContainer = "container:Auto Navigator.xcodeproj">
+            BuildableName = "Distance Calculator.app"
+            BlueprintName = "Distance Calculator"
+            ReferencedContainer = "container:Distance Calculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52C727BC1F5BD07E0058D0ED"
-            BuildableName = "Auto Navigator.app"
-            BlueprintName = "Auto Navigator"
-            ReferencedContainer = "container:Auto Navigator.xcodeproj">
+            BuildableName = "Distance Calculator.app"
+            BlueprintName = "Distance Calculator"
+            ReferencedContainer = "container:Distance Calculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
