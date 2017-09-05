@@ -11,21 +11,58 @@ import UIKit
 class ViewController: UIViewController {
 
     
+    @IBOutlet var mainView: UIView!
     @IBOutlet var topView: UIView!
     @IBOutlet var bottomView: UIView!
-    @IBOutlet var menuLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var navigationBar: UINavigationBar!
     
+    @IBOutlet var mainLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var timeLabel: UILabel!
+    
+    @IBOutlet var diameter: UITextField!
+    @IBOutlet var rpm: UITextField!
+    @IBOutlet var distance: UITextField!
+
     var menuShowing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         initialize()
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissView))
+        mainView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissView() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+        
+        openMenu(sender: mainView)
+        
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.mainView.frame.origin.y == 0{
+                self.mainView.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.mainView.frame.origin.y != 0{
+                self.mainView.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     func initialize() {
@@ -48,7 +85,8 @@ class ViewController: UIViewController {
         //Assign the gradient to the view
         self.topView.layer.insertSublayer(gradient, at: 0)
         
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.mainView.layer.shadowOpacity = 1
+        self.mainView.layer.shadowRadius = 10
         
         let rectShape = CAShapeLayer()
         rectShape.bounds = self.topView.frame
@@ -59,16 +97,24 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+    @IBAction func openMenu(_ sender: Any) {
         if (menuShowing){
-            self.menuLeadingConstraint.constant = -175
+            self.mainLeadingConstraint.constant = 0
         }
         else {
-            self.menuLeadingConstraint.constant = 0
+            self.mainLeadingConstraint.constant = 200
         }
-        menuShowing = !menuShowing
         
-        UIApplication.shared.isStatusBarHidden = menuShowing
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        menuShowing = !menuShowing
+    }
+    
+    
+    @IBAction func calculateDistance(_ sender: UIButton) {
+        timeLabel.text = String(Double(distance.text!)! / (((Double.pi * Double(diameter.text!)!) / 60) * Double(rpm.text!)!))
     }
     
 
