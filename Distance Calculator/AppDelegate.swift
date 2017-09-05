@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Auto Navigator
+//  Distance Calculator
 //
 //  Created by Shyam Pindoria on 3/9/17.
 //  Copyright © 2017 Shyam Pindoria. All rights reserved.

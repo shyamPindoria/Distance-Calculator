@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Auto Navigator
+//  Distance Calculator
 //
 //  Created by Shyam Pindoria on 3/9/17.
 //  Copyright © 2017 Shyam Pindoria. All rights reserved.
@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var navigationBar: UINavigationBar!
+    
     @IBOutlet var topView: UIView!
     @IBOutlet var bottomView: UIView!
+    @IBOutlet var menuLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var navigationBar: UINavigationBar!
+    
+    var menuShowing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +28,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //Change the status bar text color to white
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     func initialize() {
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         //Creates the gradient for the view
         let gradient: CAGradientLayer = CAGradientLayer()
         //1st color
@@ -46,7 +48,6 @@ class ViewController: UIViewController {
         //Assign the gradient to the view
         self.topView.layer.insertSublayer(gradient, at: 0)
         
-        //Make the navigation bar transparent
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         let rectShape = CAShapeLayer()
@@ -57,6 +58,19 @@ class ViewController: UIViewController {
         self.topView.layer.mask = rectShape
         
     }
+    
+    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+        if (menuShowing){
+            self.menuLeadingConstraint.constant = -175
+        }
+        else {
+            self.menuLeadingConstraint.constant = 0
+        }
+        menuShowing = !menuShowing
+        
+        UIApplication.shared.isStatusBarHidden = menuShowing
+    }
+    
 
 
 }
