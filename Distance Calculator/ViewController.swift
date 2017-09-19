@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     func initialize() {
         
         //Creates the gradient for the view
-        let gradient: CAGradientLayer = CAGradientLayer()
+        let gradient = CAGradientLayer()
         //1st color
         let colorTop = UIColor(red: 230.0 / 255.0, green: 62.0 / 255.0, blue: 59.0 / 255.0, alpha: 1.0).cgColor
         //2nd color
@@ -87,12 +87,14 @@ class ViewController: UIViewController {
         //Set the colors to the gradient layer
         gradient.colors = [colorTop, colorBottom]
         //x and y coordinates for the gradient
-        gradient.locations = [0.0 , 1.0]
-        gradient.startPoint = CGPoint(x: 0.8, y: 0.0)
-        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.height, height: self.topView.frame.size.height)
+//        gradient.locations = [0.0 , 1.0]
+//        gradient.startPoint = CGPoint(x: 0.8, y: 0.0)
+//        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = self.topView.bounds
         //Assign the gradient to the view
+        
         self.topView.layer.insertSublayer(gradient, at: 0)
+        //gradient.frame = self.topView.bounds
         
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 10
