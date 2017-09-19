@@ -18,22 +18,27 @@ class ViewController: UIViewController {
     @IBOutlet var mainLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var revolutionsLabel: UILabel!
     
-    @IBOutlet var diameter: UITextField!
-    @IBOutlet var rpm: UITextField!
-    @IBOutlet var distance: UITextField!
+    @IBOutlet var diameterTextField: UITextField!
+    @IBOutlet var rpmTextField: UITextField!
+    @IBOutlet var distanceTextField: UITextField!
+    
 
     var menuShowing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         initialize()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissView))
-        mainView.addGestureRecognizer(tap)
+        let hideKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(hideKeyboard)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,33 +46,37 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func dismissView() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-        
-        openMenu(sender: mainView)
-        
+    func dismissKeyboard() {
+        //Dismiss the keyboard
+        self.view.endEditing(true)
+        dismissMenu()
+    }
+    
+    func dismissMenu() {
+        //Dismiss the menu
+        if menuShowing {
+            openCloseMenu(self)
+        }
     }
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.mainView.frame.origin.y == 0{
-                self.mainView.frame.origin.y -= keyboardSize.height
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+                dismissMenu()
             }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.mainView.frame.origin.y != 0{
-                self.mainView.frame.origin.y += keyboardSize.height
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
             }
         }
     }
     
     func initialize() {
-        
-        UIApplication.shared.statusBarStyle = .lightContent
         
         //Creates the gradient for the view
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -88,21 +97,19 @@ class ViewController: UIViewController {
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 10
         
-        let rectShape = CAShapeLayer()
-        rectShape.bounds = self.topView.frame
-        rectShape.position = self.topView.center
-        rectShape.path = UIBezierPath(roundedRect: self.topView.bounds, byRoundingCorners: [.bottomLeft , .bottomRight], cornerRadii: CGSize(width: 100, height: 20)).cgPath
-        //Here I'm masking the textView's layer with rectShape layer
-        self.topView.layer.mask = rectShape
+        self.topView.layer.cornerRadius = 100
         
     }
     
-    @IBAction func openMenu(_ sender: Any) {
+    @IBAction func openCloseMenu(_ sender: Any) {
+        
+        
         if (menuShowing){
             self.mainLeadingConstraint.constant = 0
         }
         else {
             self.mainLeadingConstraint.constant = 200
+            dismissKeyboard()
         }
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -110,11 +117,25 @@ class ViewController: UIViewController {
         })
         
         menuShowing = !menuShowing
+        
     }
     
     
     @IBAction func calculateDistance(_ sender: UIButton) {
-        timeLabel.text = String(Double(distance.text!)! / (((Double.pi * Double(diameter.text!)!) / 60) * Double(rpm.text!)!))
+        dismissKeyboard()
+        if var distance = Double(distanceTextField.text!) {
+            if var diameter = Double(diameterTextField.text!) {
+                if var rpm = Double(rpmTextField.text!) {
+                    
+                    var totalTime = distance / (((Double.pi * diameter) / 60) * rpm)
+                    var revolutions = rpm / 60 * totalTime
+                    timeLabel.text = "\(String(format: "%.2f", totalTime))s"
+                    revolutionsLabel.text = "\(String(format: "%.2f", revolutions)) Revolutions"
+                    
+                    
+                }
+            }
+        }
     }
     
 
