@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+
+class ViewController: UIViewController {
+    
+    public static var settings: [String: Int] = ["system": 0, "diameter": 1, "distance": 1]
     
     @IBOutlet var mainView: UIView!
     @IBOutlet var topView: UIView!
@@ -44,6 +47,10 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.gradient.frame = self.topView.bounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateUnits()
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,14 +108,46 @@ class ViewController: UIViewController {
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 10
         
+    }
+    
+    func updateUnits() {
         
+        if ViewController.settings["system"] == 0 {
+        
+            if ViewController.settings["diameter"] == 1 {
+            diameterTextField.placeholder = "Metres"
+                } else {
+            diameterTextField.placeholder = "Millimtres"
+            }
+        
+            if ViewController.settings["distance"] == 1 {
+                distanceTextField.placeholder = "Metres"
+            } else {
+                distanceTextField.placeholder = "Millimtres"
+            }
+            
+        } else {
+            
+            if ViewController.settings["diameter"] == 1 {
+                diameterTextField.placeholder = "Feet"
+            } else {
+                diameterTextField.placeholder = "Inches"
+            }
+            
+            if ViewController.settings["distance"] == 1 {
+                distanceTextField.placeholder = "Feet"
+            } else {
+                distanceTextField.placeholder = "Inches"
+            }
+            
+        }
         
     }
     
     @IBAction func openCloseMenu(_ sender: Any) {
         
         
-        if (menuShowing){
+        if menuShowing {
             self.mainLeadingConstraint.constant = 0
         }
         else {
@@ -126,22 +165,38 @@ class ViewController: UIViewController {
         
     }
     
+    func getValueFromTextField(textField: UITextField, units: Int) -> Double {
+        
+        if var value = Double(textField.text!) {
+            if ViewController.settings["system"] == 0 {
+                if units == 0 {
+                    value = value * 0.001
+                }
+            } else {
+                if units == 0 {
+                    value = value * 0.0254
+                } else {
+                    value = value * 0.3048
+                }
+            }
+            return value
+        }
+        
+        return 0
+        
+    }
     
     @IBAction func calculateDistance(_ sender: UIButton) {
         dismissKeyboard()
-        if var distance = Double(distanceTextField.text!) {
-            if var diameter = Double(diameterTextField.text!) {
-                if var rpm = Double(rpmTextField.text!) {
+        let distance = getValueFromTextField(textField: distanceTextField, units: ViewController.settings["distance"]!)
+        let diameter = getValueFromTextField(textField: diameterTextField, units: ViewController.settings["diameter"]!)
+        let rpm = Double(rpmTextField.text!)
                     
-                    var totalTime = distance / (((Double.pi * diameter) / 60) * rpm)
-                    var revolutions = rpm / 60 * totalTime
-                    timeLabel.text = "\(String(format: "%.2f", totalTime))s"
-                    revolutionsLabel.text = "\(String(format: "%.2f", revolutions)) Revolutions"
-                    
-                    
-                }
-            }
-        }
+        let totalTime = distance / (((Double.pi * diameter) / 60) * rpm!)
+        let revolutions = rpm! / 60 * totalTime
+        timeLabel.text = "\(String(format: "%.2f", totalTime))s"
+        
+        revolutionsLabel.text = "\(String(format: "%.2f", revolutions)) Revolutions"
     }
     
 

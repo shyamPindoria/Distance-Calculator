@@ -14,20 +14,19 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var diameter: UISegmentedControl!
     @IBOutlet var distance: UISegmentedControl!
     
-    var settings: [String: Int] = ["system": 0, "diameter": 1, "distance": 1]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUnits()
     }
     
+    
     @IBAction func settingsChanged(_ sender: UISegmentedControl) {
         
-        self.settings.updateValue(measuringSystem.selectedSegmentIndex, forKey: "system")
+        ViewController.settings.updateValue(measuringSystem.selectedSegmentIndex, forKey: "system")
         
-        self.settings.updateValue(diameter.selectedSegmentIndex, forKey: "diameter")
+        ViewController.settings.updateValue(diameter.selectedSegmentIndex, forKey: "diameter")
         
-        self.settings.updateValue(distance.selectedSegmentIndex, forKey: "distance")
+        ViewController.settings.updateValue(distance.selectedSegmentIndex, forKey: "distance")
         
        self.updateUnits()
         
@@ -35,7 +34,7 @@ class SettingsTableViewController: UITableViewController {
     
     func updateUnits() {
         
-        if(settings["system"] == 1) {
+        if ViewController.settings["system"] == 1  {
             
             diameter.setTitle("Inch", forSegmentAt: 0)
             diameter.setTitle("Feet", forSegmentAt: 1)
@@ -52,9 +51,10 @@ class SettingsTableViewController: UITableViewController {
             distance.setTitle("Metres", forSegmentAt: 1)
         }
         
-        measuringSystem.selectedSegmentIndex = settings["system"]!
-        diameter.selectedSegmentIndex = settings["diameter"]!
-        distance.selectedSegmentIndex = settings["distance"]!
+        measuringSystem.selectedSegmentIndex = ViewController.settings["system"]!
+        diameter.selectedSegmentIndex = ViewController.settings["diameter"]!
+        distance.selectedSegmentIndex = ViewController.settings["distance"]!
     
     }
+    
 }
