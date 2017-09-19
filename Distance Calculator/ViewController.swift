@@ -20,7 +20,9 @@ class ViewController: UIViewController {
     
     @IBOutlet var mainLeadingConstraint: NSLayoutConstraint!
     
-    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var hourLabel: UILabel!
+    @IBOutlet var minLabel: UILabel!
+    @IBOutlet var secLabel: UILabel!
     @IBOutlet var revolutionsLabel: UILabel!
     
     @IBOutlet var diameterTextField: UITextField!
@@ -190,13 +192,22 @@ class ViewController: UIViewController {
         dismissKeyboard()
         let distance = getValueFromTextField(textField: distanceTextField, units: ViewController.settings["distance"]!)
         let diameter = getValueFromTextField(textField: diameterTextField, units: ViewController.settings["diameter"]!)
-        let rpm = Double(rpmTextField.text!)
-                    
-        let totalTime = distance / (((Double.pi * diameter) / 60) * rpm!)
-        let revolutions = rpm! / 60 * totalTime
-        timeLabel.text = "\(String(format: "%.2f", totalTime))s"
         
-        revolutionsLabel.text = "\(String(format: "%.2f", revolutions)) Revolutions"
+        if let rpm = (Double(rpmTextField.text!)) {
+            if diameter != 0 && rpm != 0 && distance != 0 {
+                    
+                var totalTime = distance / (((Double.pi * diameter) / 60) * rpm)
+                let revolutions = rpm / 60 * totalTime
+                
+                totalTime = round(totalTime)
+                
+                hourLabel.text = String(format: "%02i", Int(totalTime / 3600))
+                minLabel.text = String(format: "%02i", Int(totalTime) / 60 % 60)
+                secLabel.text = String(format: "%02i", Int(totalTime) % 60)
+        
+                revolutionsLabel.text = "\(String(format: "%.2f", revolutions)) Revolutions"
+            }
+        }
     }
     
 
