@@ -83,8 +83,7 @@ class ViewController: UIViewController {
     
     func initialize() {
         
-        //Creates the gradient for the view
-        
+        //Create the gradient for the topView
         //1st color
         let colorTop = UIColor(red: 230.0 / 255.0, green: 62.0 / 255.0, blue: 59.0 / 255.0, alpha: 1.0).cgColor
         //2nd color
@@ -97,11 +96,12 @@ class ViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
         //Assign the gradient to the view
         self.topView.layer.insertSublayer(gradient, at: 0)
+        self.topView.layer.cornerRadius = 100
         
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 10
         
-        self.topView.layer.cornerRadius = 100
+        
         
     }
     
