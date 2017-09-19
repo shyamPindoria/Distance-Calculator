@@ -28,7 +28,7 @@ class AboutViewController: UIViewController {
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.circle.frame.size.height, height: self.circle.frame.size.height)
+        gradient.frame = self.circle.bounds
         gradient.cornerRadius = self.circle.frame.size.width / 2
         //Assign the gradient to the view
         self.circle.layer.insertSublayer(gradient, at: 0)
@@ -42,6 +42,7 @@ class AboutViewController: UIViewController {
         
         
     }
+    
     
 }
 

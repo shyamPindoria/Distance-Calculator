@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet var rpmTextField: UITextField!
     @IBOutlet var distanceTextField: UITextField!
     
-
+    let gradient = CAGradientLayer()
     var menuShowing = false
     
     override func viewDidLoad() {
@@ -39,6 +39,11 @@ class ViewController: UIViewController {
         //Looks for single or multiple taps.
         let hideKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         self.view.addGestureRecognizer(hideKeyboard)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.gradient.frame = self.topView.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,7 +84,7 @@ class ViewController: UIViewController {
     func initialize() {
         
         //Creates the gradient for the view
-        let gradient = CAGradientLayer()
+        
         //1st color
         let colorTop = UIColor(red: 230.0 / 255.0, green: 62.0 / 255.0, blue: 59.0 / 255.0, alpha: 1.0).cgColor
         //2nd color
@@ -87,14 +92,11 @@ class ViewController: UIViewController {
         //Set the colors to the gradient layer
         gradient.colors = [colorTop, colorBottom]
         //x and y coordinates for the gradient
-//        gradient.locations = [0.0 , 1.0]
-//        gradient.startPoint = CGPoint(x: 0.8, y: 0.0)
-//        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.frame = self.topView.bounds
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
         //Assign the gradient to the view
-        
         self.topView.layer.insertSublayer(gradient, at: 0)
-        //gradient.frame = self.topView.bounds
         
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 10
@@ -116,9 +118,11 @@ class ViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
+            self.gradient.frame = self.topView.bounds
         })
         
         menuShowing = !menuShowing
+        
         
     }
     

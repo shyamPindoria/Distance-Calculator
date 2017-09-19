@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52348F4A1F6E6C9D007D68AA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52348F491F6E6C9D007D68AA /* AboutViewController.swift */; };
+		52348F4C1F70ECA2007D68AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52348F4B1F70ECA2007D68AA /* SettingsViewController.swift */; };
 		52C727C11F5BD07E0058D0ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C727C01F5BD07E0058D0ED /* AppDelegate.swift */; };
 		52C727C31F5BD07E0058D0ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C727C21F5BD07E0058D0ED /* ViewController.swift */; };
 		52C727C61F5BD07E0058D0ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C727C41F5BD07E0058D0ED /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		52348F491F6E6C9D007D68AA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		52348F4B1F70ECA2007D68AA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		52C727BD1F5BD07E0058D0ED /* Distance Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Distance Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C727C01F5BD07E0058D0ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52C727C21F5BD07E0058D0ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				52C727C01F5BD07E0058D0ED /* AppDelegate.swift */,
 				52C727C21F5BD07E0058D0ED /* ViewController.swift */,
+				52348F4B1F70ECA2007D68AA /* SettingsViewController.swift */,
 				52348F491F6E6C9D007D68AA /* AboutViewController.swift */,
 				52C727C41F5BD07E0058D0ED /* Main.storyboard */,
 				52C727C71F5BD07E0058D0ED /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 				52348F4A1F6E6C9D007D68AA /* AboutViewController.swift in Sources */,
 				52C727C31F5BD07E0058D0ED /* ViewController.swift in Sources */,
 				52C727C11F5BD07E0058D0ED /* AppDelegate.swift in Sources */,
+				52348F4C1F70ECA2007D68AA /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
