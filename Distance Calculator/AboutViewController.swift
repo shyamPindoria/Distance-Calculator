@@ -36,13 +36,12 @@ class AboutViewController: UIViewController {
         //Create a circular layer
         self.circle.layer.cornerRadius = circle.frame.size.width / 2
         
-        self.circle.layer.shadowOpacity = 1
-        self.circle.layer.shadowRadius = 15
-        
-        
+        //Give the circle a shadow
+        self.circle.layer.shadowOpacity = 0.5
+        self.circle.layer.shadowRadius = 10
+        self.circle.layer.shadowOffset.height = 6
+        self.circle.layer.shadowOffset.width = 4
         
     }
-    
-    
 }
 

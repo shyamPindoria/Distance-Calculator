@@ -16,10 +16,11 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUnits()
+        //Update the units displayed
+        self.updateUnits()
     }
     
-    
+    ///Make changes in the settings dictionary when a setting changes
     @IBAction func settingsChanged(_ sender: UISegmentedControl) {
         
         ViewController.settings.updateValue(measuringSystem.selectedSegmentIndex, forKey: "system")
@@ -28,12 +29,15 @@ class SettingsTableViewController: UITableViewController {
         
         ViewController.settings.updateValue(distance.selectedSegmentIndex, forKey: "distance")
         
-       self.updateUnits()
+        //Update the units displayed
+        self.updateUnits()
         
     }
     
+    ///Updates the text on the segment controls with the current settings
     func updateUnits() {
         
+        //Imperial
         if ViewController.settings["system"] == 1  {
             
             diameter.setTitle("Inch", forSegmentAt: 0)
@@ -42,7 +46,7 @@ class SettingsTableViewController: UITableViewController {
             distance.setTitle("Inch", forSegmentAt: 0)
             distance.setTitle("Feet", forSegmentAt: 1)
             
-            
+        //Metric
         } else {
             diameter.setTitle("Millimetres", forSegmentAt: 0)
             diameter.setTitle("Metres", forSegmentAt: 1)
@@ -51,6 +55,7 @@ class SettingsTableViewController: UITableViewController {
             distance.setTitle("Metres", forSegmentAt: 1)
         }
         
+        //Change the selected indexes accordingly
         measuringSystem.selectedSegmentIndex = ViewController.settings["system"]!
         diameter.selectedSegmentIndex = ViewController.settings["diameter"]!
         distance.selectedSegmentIndex = ViewController.settings["distance"]!
